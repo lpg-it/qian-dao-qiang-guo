@@ -47,14 +47,14 @@ export default {
   methods: {
     loginHandler() {
       this.$axios
-        .post("/SSM/api/login", {
+        .post("SSM/api/login", {
           id: this.User.id,
           password: this.User.password
         })
         .then(successResponse => {
           console.log(successResponse.data);
-          if (successResponse.data.code == 400) {
-            this.$router.replace({ path: "/index" });
+          if (successResponse.data.code == 200) {
+            this.$router.replace({ path: "/home" });
           }
         })
         .catch(failResponse => {});

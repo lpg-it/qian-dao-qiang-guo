@@ -1,13 +1,28 @@
 <template>
-  <div>
+  <div class="mainContent">
     <Header/>
     <div class="content">
-      <div class="breadcrumb">
-        <el-breadcrumb separator="/">
-          <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{path: '/student'}">学生管理</el-breadcrumb-item>
-        </el-breadcrumb>
-      </div>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path: '/student'}">学生管理</el-breadcrumb-item>
+      </el-breadcrumb>
+
+      <!--工具条-->
+      <el-col class="toolbar">
+        <el-form :inline="true" :model="studentList">
+          <el-form-item>
+            <el-input
+              v-model="studentList.name"
+              placeholder="用户名/姓名/昵称"
+              style="min-width: 240px;"
+              @keyup.enter.native="handleSearch"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="handleSearch">查询</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
 
       <!-- 学生列表展示 -->
       <div class="studentTable">
@@ -69,6 +84,14 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <!-- 专业班级 -->
+          <el-form-item label="专业班级" label-width="120px">
+            <el-input
+              v-model="editStudentList.classes"
+              value="editStudentList.classes"
+              auto-complete="off"
+            ></el-input>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="editStudent = false">取 消</el-button>
@@ -92,6 +115,7 @@ export default {
   components: { Header },
   data() {
     return {
+      courseList: [],
       studentList: [
         {
           id: 1,
@@ -124,40 +148,67 @@ export default {
       ],
       collegeList: [
         {
-          value: 'fzu',
-          label: '福州大学'
+          value: "fzu",
+          label: "福州大学"
         }
       ]
     };
   },
-  methods: {
-    // this.getStudentList()
-  },
   created() {
-    // getStudentList();
-  }
+    // this.getStudentList();
+    this.getCourseList()
+  },
+  methods: {
+    getCourseList() {
+      this.$axios
+        .get('course_sub/category/list/')
+        .then(res => {
+          console.log(res);
+          if (res.error_no === 0) {
+            this.courseList = res.data;
+            //$.each()
+            console.log(this.courseList);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    handleSearch() {
+      this.search();
+    }
+  },
 };
 </script>
 
 <style lang="css" scoped>
 .content {
+  float: left;
+  width: 87.5%;
   height: 855px;
   background-color: rgb(227, 227, 227);
 }
 
 /* 面包屑 */
-.breadcrumb {
+.content .el-breadcrumb {
   display: inline-block;
-  width: 80%;
+  /* width: 10%; */
   padding: 18px;
   margin-left: 20px;
 }
 
+/* 搜索 */
+.content .toolbar {
+  display: inline-block;
+  margin-left: 100px;
+}
+
 /* 学生列表 */
 .studentTable {
+  display: inline-block;
   margin-top: 10px;
-  margin-left: 300px;
-  min-width: 86%;
+  /* margin-left: 100px; */
+  width: 120%;
 }
 
 .studentTable el-table {
