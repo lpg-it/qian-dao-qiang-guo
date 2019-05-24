@@ -2,7 +2,7 @@
   <div>
     <Header/>
     <div class='content'>
-
+这是teacher
     </div>
   </div>
 </template>

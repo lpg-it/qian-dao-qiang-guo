@@ -2,7 +2,7 @@
   <div>
     <Header/>
     <div class='content'>
-
+这是班级
     </div>
   </div>
 </template>

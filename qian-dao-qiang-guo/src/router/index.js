@@ -3,13 +3,10 @@ import Router from 'vue-router'
 import Login from '@/components/manage/Login.vue'
 import Home from '@/components/home/Home.vue'
 import Role from '@/components/role/Role'
+import Student from '@/components/student/Student'
+import Teacher from '@/components/teacher/Teacher'
+import Classes from '@/components/classes/Classes'
 
-import Student from '@/components/student/Student'
-import Student from '@/components/student/Student'
-
-import Student from '@/components/student/Student'
-
-import Student from '@/components/student/Student'
 
 
 Vue.use(Router)
@@ -32,9 +29,24 @@ export default new Router({
       component: Login
     },
     {
+      path: '/role',
+      name: 'Role',
+      component: Role
+    },
+    {
       path: '/student',
       name: 'Student',
       component: Student
+    },
+    {
+      path: '/teacher',
+      name: 'Teacher',
+      component: Teacher
+    },
+    {
+      path: '/classes',
+      name: 'Classes',
+      component: Classes
     }
   ]
 })
