@@ -98,20 +98,20 @@
       </el-dialog>
 
       <!-- 添加学生页面 -->
-      <el-dialog title="编辑学生" :visible.sync="addStudent">
-        <el-form :model="editStudentList">
+      <el-dialog title="添加学生" :visible.sync="addStudent">
+        <el-form :model="addForm">
           <el-form-item label="学号" label-width="120px">
-            <el-input v-model="editStudentList.id" auto-complete="off"></el-input>
+            <el-input v-model="addForm.id" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="姓名" label-width="120px">
             <el-input
-              v-model="editStudentList.name"
-              value="editStudentList.name"
+              v-model="addForm.name"
+              value="addForm.name"
               auto-complete="off"
             ></el-input>
           </el-form-item>
           <el-form-item label="性别" label-width="120px">
-            <el-select v-model="editStudentList.sex" placeholder="请选择">
+            <el-select v-model="addForm.sex" placeholder="请选择">
               <el-option
                 v-for="sex in sexList"
                 :key="sex.value"
@@ -121,11 +121,11 @@
             </el-select>
           </el-form-item>
           <el-form-item label="出生年份" label-width="120px">
-            <el-date-picker v-model="editStudentList.birth" type="date" placeholder="选择日期"></el-date-picker>
+            <el-date-picker v-model="addForm.birth" type="date" placeholder="选择日期"></el-date-picker>
           </el-form-item>
           <!-- 学校 -->
           <el-form-item label="学校" label-width="120px">
-            <el-select v-model="editStudentList.college" placeholder="请选择学校">
+            <el-select v-model="addForm.college" placeholder="请选择学校">
               <el-option
                 v-for="college in collegeList"
                 :key="college.value"
@@ -137,7 +137,7 @@
           <!-- 专业班级 -->
           <el-form-item label="专业班级" label-width="120px">
             <el-input
-              v-model="editStudentList.classes"
+              v-model="addForm.classes"
               value="editStudentList.classes"
               auto-complete="off"
             ></el-input>
