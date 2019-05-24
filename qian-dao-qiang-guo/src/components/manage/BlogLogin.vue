@@ -104,9 +104,11 @@ li {
 .login-title span {
   width: 190px;
   height: auto;
-  color: white;
+  font-family: Fredoka One;
+  color: rgba(225, 225, 225, 0.9);
   font-size: 50px;
   font-weight: bold;
+  
 }
 .login-title p {
   font-family: PingFangSC-Regular;
@@ -132,13 +134,9 @@ li {
   border-bottom: 1px solid #e6e6e6;
   display: flex;
   justify-content: space-around;
-  padding: 50px 60px 0 60px;
+  padding: 25px 60px 25px 60px;
   margin-bottom: 20px;
   cursor: pointer;
-}
-.login_box .title span:nth-of-type(1) {
-  color: #4a4a4a;
-  border-bottom: 2px solid #84cc39;
 }
 
 .inp {
