@@ -48,10 +48,11 @@ export default {
       isShow: false,
       navlinks: [
         { id: 1, title: "首页", name: "Home" },
-        { id: 2, title: "角色管理", name: "Role" },
+        { id: 2, title: "签到管理", name: "Register" },
         { id: 3, title: "学生管理", name: "Student" },
         { id: 4, title: "教师管理", name: "Teacher" },
-        { id: 5, title: "班级管理", name: "Course" }
+        { id: 5, title: "课程管理", name: "Course" },
+        { id: 6, title: "角色管理", name: "Role" },
       ]
     };
   },

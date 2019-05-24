@@ -4,14 +4,14 @@
     <div class="content">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path: '/student'}">课程管理</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path: '/register'}">签到管理</el-breadcrumb-item>
       </el-breadcrumb>
 
       <!--工具条-->
       <el-col class="toolbar">
         <el-form :inline="true" :model="filters">
           <el-form-item>
-            <el-input v-model="filters.name" placeholder="课程名称" style="min-width: 240px;"></el-input>
+            <el-input v-model="filters.name" placeholder="姓名" style="min-width: 240px;"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSearch">查询</el-button>
@@ -30,10 +30,12 @@
           style="width: 85%"
           :default-sort="{prop: 'id', order: 'descending'}"
         >
-          <el-table-column prop="id" label="课程编号" sortable width="180"></el-table-column>
-          <el-table-column prop="name" label="课程名称" sortable width="180"></el-table-column>
-          <el-table-column prop="college" label="所属学校" width="180"></el-table-column>
-          <el-table-column prop="classes" label="任课教师" width="180"></el-table-column>
+          <el-table-column prop="id" label="学号" sortable width="180"></el-table-column>
+          <el-table-column prop="name" label="姓名" sortable width="180"></el-table-column>
+          <el-table-column prop="sex" label="性别" width="180"></el-table-column>
+          <el-table-column prop="birth" label="出生年份" width="180"></el-table-column>
+          <el-table-column prop="college" label="学校" width="180"></el-table-column>
+          <el-table-column prop="classes" label="专业班级" width="180"></el-table-column>
           <el-table-column label="操作">
             <template>
               <el-button size="mini" @click="editStudent = true">编辑</el-button>
@@ -150,7 +152,7 @@ import Header from "@/components/common/Header.vue";
 // import blogFooter from '@/components/common/BlogFooter.vue'
 
 export default {
-  name: "Classes",
+  name: "Register",
   // blogHeader/blogFooter组件给申明到components里面然后在template里面使用
   components: { Header },
   data() {

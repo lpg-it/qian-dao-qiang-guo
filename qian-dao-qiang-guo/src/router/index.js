@@ -6,6 +6,9 @@ import Role from '@/components/role/Role'
 import Student from '@/components/student/Student'
 import Teacher from '@/components/teacher/Teacher'
 import Course from '@/components/course/Course'
+import Register from '@/components/register/Register'
+import Error404 from '@/components/error404'
+import Error500 from '@/components/error500'
 
 
 
@@ -47,6 +50,21 @@ export default new Router({
       path: '/course',
       name: 'Course',
       component: Course
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      path: '/404',
+      name: 'Error404',
+      component: Error404
+    },
+    {
+      path: '/500',
+      name: 'Error500',
+      component: Error500
     }
   ]
 })
