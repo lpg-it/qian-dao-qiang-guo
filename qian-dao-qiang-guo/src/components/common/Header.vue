@@ -51,7 +51,7 @@ export default {
         { id: 2, title: "角色管理", name: "Role" },
         { id: 3, title: "学生管理", name: "Student" },
         { id: 4, title: "教师管理", name: "Teacher" },
-        { id: 5, title: "班级管理", name: "Classes" }
+        { id: 5, title: "班级管理", name: "Course" }
       ]
     };
   },
