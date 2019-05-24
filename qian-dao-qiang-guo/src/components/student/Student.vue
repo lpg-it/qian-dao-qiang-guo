@@ -43,6 +43,8 @@
             </template>
           </el-table-column>
         </el-table>
+
+        <el-pagination layout="prev, pager, next" :page-size="10" :total="50" style="float:right;"></el-pagination>
       </div>
 
       <!-- 编辑学生页面 -->
@@ -104,11 +106,7 @@
             <el-input v-model="addForm.id" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="姓名" label-width="120px">
-            <el-input
-              v-model="addForm.name"
-              value="addForm.name"
-              auto-complete="off"
-            ></el-input>
+            <el-input v-model="addForm.name" value="addForm.name" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="性别" label-width="120px">
             <el-select v-model="addForm.sex" placeholder="请选择">
@@ -136,16 +134,12 @@
           </el-form-item>
           <!-- 专业班级 -->
           <el-form-item label="专业班级" label-width="120px">
-            <el-input
-              v-model="addForm.classes"
-              value="editStudentList.classes"
-              auto-complete="off"
-            ></el-input>
+            <el-input v-model="addForm.classes" value="editStudentList.classes" auto-complete="off"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="editStudent = false">取 消</el-button>
-          <el-button type="primary" @click="editStudent = false">确 定</el-button>
+          <el-button @click="addStudent = false">取 消</el-button>
+          <el-button type="primary" @click="addStudent = false">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -174,12 +168,20 @@ export default {
           birth: "1996-03-16",
           college: "福州大学",
           classes: "计算机技术一班"
+        },
+        {
+          id: 2,
+          name: "小明",
+          sex: "男",
+          birth: "1996-03-16",
+          college: "福州大学",
+          classes: "计算机技术一班"
         }
       ],
       // 新增相关数据
       addStudent: false, // 新增界面是否显示
       addForm: {
-        id: '',
+        id: "",
         name: "",
         sex: "",
         birth: "",
@@ -269,5 +271,9 @@ export default {
 .studentTable el-table {
   border-radius: 11px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+}
+/* 分页 */
+.studentTable .el-pagination {
+  margin-right: 14.7%;
 }
 </style>
