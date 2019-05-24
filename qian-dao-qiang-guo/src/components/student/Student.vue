@@ -9,17 +9,15 @@
 
       <!--工具条-->
       <el-col class="toolbar">
-        <el-form :inline="true" :model="studentList">
+        <el-form :inline="true" :model="filters">
           <el-form-item>
-            <el-input
-              v-model="studentList.name"
-              placeholder="用户名/姓名/昵称"
-              style="min-width: 240px;"
-              @keyup.enter.native="handleSearch"
-            ></el-input>
+            <el-input v-model="filters.name" placeholder="姓名" style="min-width: 240px;"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSearch">查询</el-button>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="showAddStudent">新增</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -100,6 +98,56 @@
       </el-dialog>
 
       <!-- 添加学生页面 -->
+      <el-dialog title="编辑学生" :visible.sync="addStudent">
+        <el-form :model="editStudentList">
+          <el-form-item label="学号" label-width="120px">
+            <el-input v-model="editStudentList.id" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="姓名" label-width="120px">
+            <el-input
+              v-model="editStudentList.name"
+              value="editStudentList.name"
+              auto-complete="off"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="性别" label-width="120px">
+            <el-select v-model="editStudentList.sex" placeholder="请选择">
+              <el-option
+                v-for="sex in sexList"
+                :key="sex.value"
+                :label="sex.label"
+                :value="sex.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="出生年份" label-width="120px">
+            <el-date-picker v-model="editStudentList.birth" type="date" placeholder="选择日期"></el-date-picker>
+          </el-form-item>
+          <!-- 学校 -->
+          <el-form-item label="学校" label-width="120px">
+            <el-select v-model="editStudentList.college" placeholder="请选择学校">
+              <el-option
+                v-for="college in collegeList"
+                :key="college.value"
+                :label="college.label"
+                :value="college.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <!-- 专业班级 -->
+          <el-form-item label="专业班级" label-width="120px">
+            <el-input
+              v-model="editStudentList.classes"
+              value="editStudentList.classes"
+              auto-complete="off"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="editStudent = false">取 消</el-button>
+          <el-button type="primary" @click="editStudent = false">确 定</el-button>
+        </div>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -115,7 +163,9 @@ export default {
   components: { Header },
   data() {
     return {
-      courseList: [],
+      filters: {
+        name: ""
+      },
       studentList: [
         {
           id: 1,
@@ -126,6 +176,17 @@ export default {
           classes: "计算机技术一班"
         }
       ],
+      // 新增相关数据
+      addStudent: false, // 新增界面是否显示
+      addForm: {
+        id: '',
+        name: "",
+        sex: "",
+        birth: "",
+        college: "",
+        classes: ""
+      },
+
       // 编辑学生控制
       editStudent: false,
       editStudentList: {
@@ -155,29 +216,23 @@ export default {
     };
   },
   created() {
+    // 获取学生列表
     // this.getStudentList();
-    this.getCourseList()
   },
   methods: {
-    getCourseList() {
-      this.$axios
-        .get('course_sub/category/list/')
-        .then(res => {
-          console.log(res);
-          if (res.error_no === 0) {
-            this.courseList = res.data;
-            //$.each()
-            console.log(this.courseList);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
+    // 获取学生列表
+    // getStudentList() {
+
+    // },
+    // 查询学生
     handleSearch() {
-      this.search();
+      console.log("查询成功");
+    },
+    // 新增学生
+    showAddStudent() {
+      this.addStudent = true;
     }
-  },
+  }
 };
 </script>
 
@@ -199,7 +254,7 @@ export default {
 
 /* 搜索 */
 .content .toolbar {
-  display: inline-block;
+  width: 94%;
   margin-left: 100px;
 }
 
@@ -207,8 +262,8 @@ export default {
 .studentTable {
   display: inline-block;
   margin-top: 10px;
-  /* margin-left: 100px; */
-  width: 120%;
+  margin-left: 100px;
+  width: 94%;
 }
 
 .studentTable el-table {
