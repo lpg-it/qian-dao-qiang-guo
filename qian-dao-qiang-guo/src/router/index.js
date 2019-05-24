@@ -1,7 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/manage/Login.vue'
-import Index from '@/components/home/Index.vue'
+import Home from '@/components/home/Home.vue'
+import Role from '@/components/role/Role'
+
+import Student from '@/components/student/Student'
+import Student from '@/components/student/Student'
+
+import Student from '@/components/student/Student'
+
+import Student from '@/components/student/Student'
+
 
 Vue.use(Router)
 
@@ -13,18 +22,19 @@ export default new Router({
       redirect: '/login'
     },
     {
-      path: '/index',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/manage',
-      redirect: '/login'
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/student',
+      name: 'Student',
+      component: Student
     }
   ]
 })
