@@ -4,6 +4,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+
 Vue.use(ElementUI)
 
 // 引用axios，并设置基础URL为后端服务api地址

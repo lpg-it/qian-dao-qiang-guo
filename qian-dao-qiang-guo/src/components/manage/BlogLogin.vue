@@ -3,7 +3,7 @@
     <img src="https://www.luffycity.com/static/img/Loginbg.3377d0c.jpg" alt>
     <div class="login">
       <div class="login-title">
-        <img src="https://www.luffycity.com/static/img/Logotitle.1ba5466.png" alt>
+        <span>签 到 强 国</span>
         <p></p>
       </div>
       <div class="login_box">
@@ -13,7 +13,6 @@
         <div class="inp">
           <input v-model="User.id" type="text" placeholder="用户名 / 手机号码" class="user">
           <input v-model="User.password" type="password" name class="pwd" placeholder="密码">
-          <div id="geetest"></div>
           <div class="rember">
             <p>
               <input type="checkbox" class="no" name="a">
@@ -85,9 +84,12 @@ export default {
   width: 100%;
   text-align: center;
 }
-.login-title img {
+.login-title span {
   width: 190px;
   height: auto;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
 }
 .login-title p {
   font-family: PingFangSC-Regular;
@@ -183,9 +185,7 @@ export default {
   /*position: absolute;*/
   /*left: 20px;*/
 }
-#geetest {
-  margin-top: 20px;
-}
+
 .login_btn {
   width: 100%;
   height: 45px;
