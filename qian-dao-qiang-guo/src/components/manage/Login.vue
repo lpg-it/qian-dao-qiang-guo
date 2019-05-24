@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import blogHeader from "@/components/common/BlogHeader.vue";
+import Header from "@/components/common/Header.vue";
 
 export default {
-  name: "BlogLogin",
+  name: "Login",
   // blogHeader、blogFooter组件给申明到components里面然后在template里面使用
-  components: { blogHeader },
+  components: { Header },
   data() {
     return {
       User: { id: "", password: "" },
@@ -53,7 +53,7 @@ export default {
         })
         .then(successResponse => {
           console.log(successResponse.data);
-          if (successResponse.data.code == 200) {
+          if (successResponse.data.code == 400) {
             this.$router.replace({ path: "/index" });
           }
         })

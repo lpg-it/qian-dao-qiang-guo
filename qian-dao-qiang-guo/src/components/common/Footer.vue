@@ -1,11 +1,11 @@
 <template>
     <div>
-        页面头部
+        页面尾部
     </div>
 </template>
 
 <script>
 export default {
-  name: 'BlogHeader'
+  name: 'Footer'
 }
 </script>

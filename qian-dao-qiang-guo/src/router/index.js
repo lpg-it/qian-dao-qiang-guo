@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BlogLogin from '@/components/manage/BlogLogin.vue'
-import BlogIndex from '@/components/home/BlogIndex.vue'
+import Login from '@/components/manage/Login.vue'
+import Index from '@/components/home/Index.vue'
 
 Vue.use(Router)
 
@@ -14,8 +14,8 @@ export default new Router({
     },
     {
       path: '/index',
-      name: 'BlogIndex',
-      component: BlogIndex
+      name: 'Index',
+      component: Index
     },
     {
       path: '/manage',
@@ -23,8 +23,8 @@ export default new Router({
     },
     {
       path: '/login',
-      name: 'BlogLogin',
-      component: BlogLogin
+      name: 'Login',
+      component: Login
     }
   ]
 })

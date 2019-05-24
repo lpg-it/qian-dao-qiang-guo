@@ -1,6 +1,6 @@
 <template>
   <div>
-    <blog-header></blog-header>
+    <header></header>
     <hr/>
     <div>
       这是首页
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import blogHeader from '@/components/common/BlogHeader.vue'
+import Header from '@/components/common/Header.vue'
 // import blogFooter from '@/components/common/BlogFooter.vue'
 
 export default {
-  name: 'BlogIndex',
+  name: 'Index',
   // blogHeader/blogFooter组件给申明到components里面然后在template里面使用
-  components: { blogHeader }
+  components: { Header }
 }
 </script>
