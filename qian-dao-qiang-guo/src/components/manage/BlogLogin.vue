@@ -64,6 +64,23 @@ export default {
 </script>
 
 <style lang="css" scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
 .box {
   width: 100%;
   position: relative;
