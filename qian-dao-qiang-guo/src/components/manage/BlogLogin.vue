@@ -13,18 +13,18 @@
       <textarea cols="30" rows="10" v-model="responseResult"></textarea>
     </div>
     <hr>
-    <blog-footer></blog-footer>
+    <!-- <blog-footer></blog-footer> -->
   </div>
 </template>
 
 <script>
 import blogHeader from "@/components/common/BlogHeader.vue";
-import blogFooter from "@/components/common/BlogFooter.vue";
+// import blogFooter from "@/components/common/BlogFooter.vue";
 
 export default {
   name: "BlogLogin",
   // blogHeader、blogFooter组件给申明到components里面然后在template里面使用
-  components: { blogHeader, blogFooter },
+  components: { blogHeader },
   data() {
     return {
       User: { id: "", password: "" },
