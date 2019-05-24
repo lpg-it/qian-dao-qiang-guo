@@ -3,13 +3,12 @@
     <el-header height="80px">
       <div class="header">
         <div class="nav-left">
-          <img src="https://www.luffycity.com/static/img/head-logo.a7cedf3.svg" alt>
+          <span>签 到 强 国</span>
         </div>
         <div class="nav-center">
           <ul>
             <li v-for="(nav,i) in navlinks" :key="nav.id">
               <router-link :to="{name:nav.name}">{{ nav.title }}</router-link>
-              <span v-if="i === 2">New</span>
             </li>
           </ul>
         </div>
@@ -25,9 +24,10 @@ export default {
     return {
       navlinks: [
         { id: 1, title: "首页", name: "Index" },
-        { id: 2, title: "免费课程", name: "Course" },
-        { id: 3, title: "轻课", name: "LightCourse" },
-        { id: 4, title: "学位课程", name: "Micro" }
+        { id: 2, title: "角色管理", name: "Micro" },
+        { id: 3, title: "学生管理", name: "Course" },
+        { id: 4, title: "教师管理", name: "LightCourse" },
+        { id: 5, title: "班级管理", name: "LightCourse" }
       ]
     };
   },
@@ -66,7 +66,8 @@ export default {
 }
 .nav-left {
   float: left;
-  margin-top: 10px;
+  font-size: 20px;
+  /* margin-top: 10px; */
 }
 .nav-center {
   float: left;
@@ -99,13 +100,6 @@ export default {
   border-bottom: 4px solid #ffc210;
 }
 
-.nav-center ul li span {
-  color: red;
-  font-size: 12px;
-  position: absolute;
-  top: -12px;
-  right: -3px;
-}
 .nav-right {
   float: right;
   position: relative;

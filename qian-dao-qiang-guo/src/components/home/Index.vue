@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header></header>
+    <Header></Header>
     <hr/>
     <div>
       这是首页
