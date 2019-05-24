@@ -23,6 +23,6 @@ export default {
 .content {
   width: 100%;
   height: 855px;
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(227, 227, 227);
 }
 </style>

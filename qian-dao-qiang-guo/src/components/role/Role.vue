@@ -1,8 +1,13 @@
 <template>
   <div>
     <Header/>
-    <div class='content'>
-这是role
+    <div class="content">
+      <div class="breadcrumb">
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{path: '/role'}">角色管理</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
     </div>
   </div>
 </template>
@@ -21,8 +26,15 @@ export default {
 
 <style lang="css" scoped>
 .content {
-  width: 100%;
+  display: block;
+  /* width: %; */
   height: 855px;
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(227, 227, 227);
+}
+
+/* 面包屑 */
+.breadcrumb {
+  padding: 18px;
+  margin-left: 260px;
 }
 </style>
