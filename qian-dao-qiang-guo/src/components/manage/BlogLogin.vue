@@ -11,7 +11,7 @@
           <span>登录</span>
         </div>
         <div class="inp">
-          <input v-model="User.id" type="text" placeholder="用户名 / 手机号码" class="user">
+          <input v-model="User.id" type="text" placeholder="用户名" class="user">
           <input v-model="User.password" type="password" name class="pwd" placeholder="密码">
           <div class="rember">
             <p>
