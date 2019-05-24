@@ -4,7 +4,7 @@
     <div class="content">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{path: '/teacher'}">教师管理</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path: '/student'}">学生管理</el-breadcrumb-item>
       </el-breadcrumb>
 
       <!--工具条-->
@@ -30,11 +30,12 @@
           style="width: 85%"
           :default-sort="{prop: 'id', order: 'descending'}"
         >
-          <el-table-column prop="id" label="工号" sortable width="180"></el-table-column>
+          <el-table-column prop="id" label="学号" sortable width="180"></el-table-column>
           <el-table-column prop="name" label="姓名" sortable width="180"></el-table-column>
           <el-table-column prop="sex" label="性别" width="180"></el-table-column>
           <el-table-column prop="birth" label="出生年份" width="180"></el-table-column>
           <el-table-column prop="college" label="学校" width="180"></el-table-column>
+          <el-table-column prop="classes" label="专业班级" width="180"></el-table-column>
           <el-table-column label="操作">
             <template>
               <el-button size="mini" @click="editStudent = true">编辑</el-button>
@@ -49,7 +50,7 @@
       <!-- 编辑学生页面 -->
       <el-dialog title="编辑学生" :visible.sync="editStudent">
         <el-form :model="editStudentList">
-          <el-form-item label="工号" label-width="120px">
+          <el-form-item label="学号" label-width="120px">
             <el-input v-model="editStudentList.id" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="姓名" label-width="120px">
@@ -83,6 +84,14 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <!-- 专业班级 -->
+          <el-form-item label="专业班级" label-width="120px">
+            <el-input
+              v-model="editStudentList.classes"
+              value="editStudentList.classes"
+              auto-complete="off"
+            ></el-input>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="editStudent = false">取 消</el-button>
@@ -93,7 +102,7 @@
       <!-- 添加学生页面 -->
       <el-dialog title="添加学生" :visible.sync="addStudent">
         <el-form :model="addForm">
-          <el-form-item label="工号" label-width="120px">
+          <el-form-item label="学号" label-width="120px">
             <el-input v-model="addForm.id" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="姓名" label-width="120px">
@@ -123,6 +132,10 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <!-- 专业班级 -->
+          <el-form-item label="专业班级" label-width="120px">
+            <el-input v-model="addForm.classes" value="editStudentList.classes" auto-complete="off"></el-input>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="addStudent = false">取 消</el-button>
@@ -139,7 +152,7 @@ import Header from "@/components/common/Header.vue";
 // import blogFooter from '@/components/common/BlogFooter.vue'
 
 export default {
-  name: "Teacher",
+  name: "Classes",
   // blogHeader/blogFooter组件给申明到components里面然后在template里面使用
   components: { Header },
   data() {

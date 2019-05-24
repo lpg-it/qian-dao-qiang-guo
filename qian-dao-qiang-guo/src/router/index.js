@@ -5,7 +5,7 @@ import Home from '@/components/home/Home.vue'
 import Role from '@/components/role/Role'
 import Student from '@/components/student/Student'
 import Teacher from '@/components/teacher/Teacher'
-import Classes from '@/components/classes/Classes'
+import Course from '@/components/course/Course'
 
 
 
@@ -44,9 +44,9 @@ export default new Router({
       component: Teacher
     },
     {
-      path: '/classes',
-      name: 'Classes',
-      component: Classes
+      path: '/course',
+      name: 'Course',
+      component: Course
     }
   ]
 })

@@ -15,42 +15,15 @@
           </div>-->
 
           <!-- <el-dropdown> -->
-          <!-- <div class="nav-right" v-if='userInfo.access_token' @mouseenter = 'enterHandler' @mouseleave = 'leaveHandler' >
-                  <span class = 'el-dropdown-link'>学习中心</span>
-                  <span class="user">{{ userInfo.username }}</span>
-                 <img :src="userInfo.avatar" alt="">
+          <div class="nav-right" @mouseenter = 'enterHandler' @mouseleave = 'leaveHandler' >
+                  <span class="user">admin</span>
                   <ul class="my_account" v-show = 'isShow'>
-                      <li>
-                        我的账户
-                        <i>></i>
-                      </li>
-                      <li>
-                        我的订单
-                        <i>></i>
-                      </li>
-                      <li>
-                        我的优惠券
-                        <i>></i>
-                      </li>
-                      <li>
-                        我的消息<span class="msg">({{ userInfo.notice_num }})</span>
-                        <i>></i>
-                      </li>
-                      <li @click = 'shop_cart'>
-                       购物车<span class="count">({{ userInfo.shop_cart_num}})</span>
-                        <i>></i>
-                      </li>
-                      <li>
+                      <li @click='quit'>
                        退出
                         <i>></i>
                       </li>
                   </ul>
-          </div>-->
-          <!-- </el-dropdown> -->
-          <!-- <div class="nav-right" v-else> -->
-          <!-- <span>登录</span> -->
-          <!-- &nbsp;| &nbsp; -->
-          <!-- <span>注册</span> -->
+          </div>
 
           <!-- </div> -->
         </div>
@@ -83,10 +56,8 @@ export default {
     };
   },
   methods: {
-    shop_cart() {
-      this.$router.push({
-        name: "shop_cart"
-      });
+    quit(){
+      this.$router.replace({ path: "/login" });
     },
     enterHandler() {
       this.isShow = true;
@@ -121,7 +92,7 @@ export default {
   box-shadow: 0 0.5px 0.5px 0 #c9c9c9;
 }
 .header {
-  width: 1200px;
+  width: 1590px;
   height: 80px;
   line-height: 80px;
   margin: 0 auto 0 50px;
@@ -172,14 +143,7 @@ export default {
 .nav-right .user {
   margin-left: 15px;
 }
-.nav-right img {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 15px;
-}
+
 .nav-right ul {
   position: absolute;
   width: 221px;
@@ -201,14 +165,6 @@ export default {
   justify-content: space-between;
   cursor: pointer;
   transition: all 0.2s linear;
-}
-.nav-right ul li span.msg {
-  margin-left: -80px;
-  color: red;
-}
-.nav-right ul li span.count {
-  margin-left: -100px;
-  color: red;
 }
 
 /* 左边菜单 */
