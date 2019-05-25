@@ -52,9 +52,10 @@ export default {
         })
         .then(successResponse => {
           console.log(successResponse.data);
-          if (successResponse.data.code == 200) {
-            this.$router.replace({ path: "/home" });
-          }
+          // if (successResponse.data.code == 200) {
+          //   this.$router.replace({ path: "/home" });
+          // }
+          this.$router.replace({ path: "/home" }
         })
         .catch(failResponse => {});
     }
