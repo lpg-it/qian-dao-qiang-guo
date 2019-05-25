@@ -11,7 +11,7 @@
           <span>登录</span>
         </div>
         <div class="inp">
-          <input v-model="User.id" type="text" placeholder="用户名" class="user">
+          <input v-model="User.loginid" type="text" placeholder="用户名" class="user">
           <input v-model="User.password" type="password" name class="pwd" placeholder="密码">
           <div class="rember">
             <p>
@@ -38,15 +38,16 @@ export default {
 
   data() {
     return {
-      User: { id: "", password: "" },
+      User: { loginid: "", password: "" },
       responseResult: []
     };
   },
   methods: {
+    // 登录
     loginHandler() {
       this.$axios
         .post("SSM/api/login", {
-          id: this.User.id,
+          id: this.User.loginid,
           password: this.User.password
         })
         .then(successResponse => {
@@ -57,6 +58,7 @@ export default {
         })
         .catch(failResponse => {});
     }
+
   }
 };
 </script>

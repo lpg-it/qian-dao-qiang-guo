@@ -162,12 +162,13 @@ export default {
       },
       studentList: [
         {
-          id: 1,
-          name: "李华",
+          userid: 1,
+          username: "李华",
           sex: "男",
-          birth: "1996-03-16",
-          college: "福州大学",
-          classes: "计算机技术一班"
+          email: 'lipeiguan@gmail.com',
+          birthday: "1996-03-16",
+          university: "福州大学",
+          majorClass: "计算机技术一班"
         },
         {
           id: 2,
@@ -224,7 +225,15 @@ export default {
   methods: {
     // 获取学生列表
     // getStudentList() {
-
+    //   this.$axios
+    //     .get("")
+    //     .then(successResponse => {
+    //       console.log(successResponse.data);
+    //       if (successResponse.data.code == 200) {
+    //         this.studentList = successResponse.data;
+    //       }
+    //     })
+    //     .catch(failResponse => {});
     // },
     // 查询学生
     handleSearch() {
