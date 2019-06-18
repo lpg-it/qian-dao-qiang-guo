@@ -220,21 +220,21 @@ export default {
   },
   created() {
     // 获取学生列表
-    // this.getStudentList();
+    this.getStudentList();
   },
   methods: {
     // 获取学生列表
-    // getStudentList() {
-    //   this.$axios
-    //     .get("")
-    //     .then(successResponse => {
-    //       console.log(successResponse.data);
-    //       if (successResponse.data.code == 200) {
-    //         this.studentList = successResponse.data;
-    //       }
-    //     })
-    //     .catch(failResponse => {});
-    // },
+    getStudentList() {
+      this.$axios
+        .get("maven02/api/getuserlist")
+        .then(successResponse => {
+          console.log(successResponse);
+          if (successResponse.data.code == 200) {
+            this.studentList = successResponse.data;
+          }
+        })
+        .catch(failResponse => {});
+    },
     // 查询学生
     handleSearch() {
       console.log("查询成功");

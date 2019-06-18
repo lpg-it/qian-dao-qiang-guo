@@ -32,7 +32,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Login",
 
@@ -45,41 +44,40 @@ export default {
   methods: {
     // 登录
     loginHandler() {
-      this.$axios
-        .post("SSM/api/login", {
-          id: this.User.loginid,
-          password: this.User.password
-        })
-        .then(successResponse => {
-          console.log(successResponse.data);
-          // if (successResponse.data.code == 200) {
-          //   this.$router.replace({ path: "/home" });
-          // }
-          this.$router.replace({ path: "/home" }
-        })
-        .catch(failResponse => {});
+      // this.$router.replace({ path: "/home" });
+        this.$axios
+          .post("maven02/api/login", {
+            id: this.User.loginid,
+            password: this.User.password
+          })
+          .then(successResponse => {
+            console.log(successResponse);
+            if (successResponse.data.code == 200) {
+              this.$router.replace({ path: "/home" });
+            }
+          })
+          .catch(failResponse => {});
     }
-
   }
 };
 </script>
 
 <style lang="css" scoped>
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 .box {
@@ -109,7 +107,6 @@ li {
   color: rgba(225, 225, 225, 0.9);
   font-size: 50px;
   font-weight: bold;
-  
 }
 .login-title p {
   font-family: PingFangSC-Regular;
