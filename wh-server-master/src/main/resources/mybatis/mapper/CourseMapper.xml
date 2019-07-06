@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wanghuan.dao.CourseDao">
+	<resultMap id="CourseMap" type="com.wanghuan.model.sys.CourseEntity">
+		<id column="id" property="id" />
+		<result column="Teacher" property="Teacher" />
+		<result column="CourseName" property="CourseName" />
+		<result column="Telephone" property="Telephone" />
+		<result column="Time" property="Time" />
+	</resultMap>
+	<!-- 获取Course列表 -->
+	<select id="CoursesList" resultMap="CourseMap">
+	<![CDATA[select * from course]]>
+		<where>
+			<if test="CourseName != null and CourseName != ''">
+				CourseName = #{CourseName}
+			</if>
+		</where>
+	    <![CDATA[ order by id desc ]]>
+		<if test="pageSize != null and start != null ">
+			limit #{start},#{pageSize}
+		</if>
+	</select>
+	<!-- 获取Course列表的总量 -->
+	<select id="CoursesSize" resultType="Integer">  
+	    <![CDATA[select count(*) from course]]>
+		<where>
+			<if test="CourseName != null and CourseName != ''">
+				CourseName = #{CourseName}
+			</if>
+		</where>
+	</select>
+	<insert id="insert">
+		<if test="CourseEntity != null">
+			insert into course (CourseName,Teacher,Time,Telephone) values
+			(#{CourseEntity.CourseName},#{CourseEntity.Teacher},#{CourseEntity.Time},#{CourseEntity.Telephone})
+		</if>
+	</insert>
+	<delete id="del">
+		delete from course
+		<where>
+			<if test="CourseEntity.id != null and CourseEntity.id != ''">id = #{CourseEntity.id}</if>
+			<if test="CourseEntity.CourseName != null and CourseEntity.CourseName != ''">and CourseName = #{CourseEntity.CourseName}</if>
+			<if test="CourseEntity.Teacher != null and CourseEntity.Teacher != ''">and Teacher = #{CourseEntity.Teacher }</if>
+			<if test="CourseEntity.Time != null and CourseEntity.Time != ''">and Time = #{CourseEntity.Time}</if>
+			<if test="CourseEntity.Telephone != null and CourseEntity.Telephone != ''">and Telephone = #{CourseEntity.Telephone}</if>
+		</where>
+	</delete>
+	<update id="update">
+		update course set CourseName = #{CourseName},Teacher = #{Teacher},Time = #{Time},Telephone = #{Telephone}
+		<where>
+			id = #{id}
+		</where>
+	</update>
+	<select id="select">
+		select * from course
+		<where>
+			<if test="id != null">id = #{id}</if>
+			<if test="CourseName != null">and CourseName = #{CourseName}</if>
+			<if test="Teacher != null">and Teacher = #{Teacher}</if>
+			<if test="Time != null">and Time = #{Time}</if>
+			<if test="Telephone != null">and Telephone = #{Telephone}</if>
+		</where>
+	</select>
+	<select id="getCourseEntityByCourseName" resultMap="CourseMap">
+		select * from course
+		<where>
+			CourseName = #{CourseName}
+		</where>
+	</select>
+	<!-- 新建用户信息 -->
+	<insert id="insertCourse">
+		insert into course (CourseName,Teacher,Time,Telephone)
+		values
+		(#{CourseEntity.CourseName},#{CourseEntity.Teacher},#{CourseEntity.Time},#{CourseEntity.Telephone})
+	</insert>
+	<!-- 更新用户信息 -->
+	<update id="updateCourse">
+		update course set
+		CourseName = #{CourseEntity.CourseName},
+		Teacher =
+		#{CourseEntity.Teacher},
+		Time = #{CourseEntity.Time},
+		Telephone =
+		#{CourseEntity.Telephone}
+		<where>
+			id = #{CourseEntity.id}
+		</where>
+	</update>
+	<!-- 删除用户信息 -->
+	<delete id="deleteCourses">
+		delete from course
+		<where>
+			<if test="groupId !=null">
+				id in
+				<foreach collection="groupId" item="item" index="index"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+	</delete>
+</mapper>
